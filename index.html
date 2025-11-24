@@ -17,43 +17,59 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <!-- Header -->
+    <input type="checkbox" id="mobile-menu-toggle" hidden />
+
+    <!-- HEADER -->
     <header class="page-header">
-      <div class="container">
-        <nav>
-          <a href="#" class="logo">
-            <span class="web">WEB</span><span class="studio">STUDIO</span>
-          </a>
+      <div class="container header-inner">
+        <a href="#" class="logo">
+          <span class="web">WEB</span><span class="studio">STUDIO</span>
+        </a>
+        <nav class="nav-links">
           <ul class="page-nav">
             <li><a href="#studio" class="active">Studio</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#contacts">Contacts</a></li>
           </ul>
         </nav>
-        <address class="adress-nav">
+        <address class="contact-links">
           <ul class="page-mail">
-            <li>
-              <a href="mailto:info@devstudio.com">info@devstudio.com</a>
-            </li>
-            <li>
-              <a href="tel:+110001111111">+11 (000) 111-11-11</a>
-            </li>
+            <li><a href="mailto:info@devstudio.com">info@devstudio.com</a></li>
+            <li><a href="tel:+110001111111">+11 (000) 111-11-11</a></li>
           </ul>
         </address>
-        <span class="menu-hamburger">
-          <a href="#mobile-menu">
-            <svg class="icon icon-Group">
-              <use xlink:href="./images/symbol-defs.svg#icon-Group"></use>
-            </svg>
-          </a>
-        </span>
+        <label for="mobile-menu-toggle" class="menu-button">
+          <svg class="icon icon-group">
+            <use xlink:href="./images/symbol-defs.svg#icon-Group"></use>
+          </svg>
+        </label>
       </div>
     </header>
-
+    <input type="checkbox" id="mobile-menu-toggle" hidden />
     <!-- Main content -->
     <main>
       <!-- Contact info -->
+      <nav class="mobile-nav">
+        <label for="mobile-menu-toggle" class="close-button">
+          <svg class="icon icon-close">
+            <use xlink:href="./images/symbol-defs.svg#icon-close"></use>
+          </svg>
+        </label>
 
+        <ul class="page-nav">
+          <li><a href="#studio" class="active">Studio</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contacts">Contacts</a></li>
+        </ul>
+
+        <address class="contact-links">
+          <ul class="page-mail">
+            <li><a href="mailto:info@devstudio.com">info@devstudio.com</a></li>
+            <li><a href="tel:+110001111111">+11 (000) 111-11-11</a></li>
+          </ul>
+        </address>
+      </nav>
+    </main>
       <!-- Hero section -->
       <section class="hero" id="studio">
         <div class="container">
@@ -445,8 +461,9 @@
         </div>
       </div>
     </footer>
-    <!-- Modal -->
-    <div class="modal">
+    <!-- MODAL -->
+
+    <div class="modal is-open">
       <div class="modal-content">
         <form class="form">
           <div class="close-button">
@@ -454,6 +471,7 @@
               <use xlink:href="./images/symbol-defs.svg#icon-close-black"></use>
             </svg>
           </div>
+
           <h2 class="modal-title">
             Leave your contacts and we will call you back
           </h2>

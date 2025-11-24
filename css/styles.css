@@ -36,9 +36,9 @@ img {
 /* GENEL KAPSAYICI */
 .container {
   width: 100%;
-  max-width: 1158px;
+  max-width: 320px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 16px;
 }
 
 /* HEADER */
@@ -73,22 +73,63 @@ nav {
 }
 
 /* HAMBURGER MENU - Mobile */
-.menu-hamburger {
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background: #fff;
+  padding: 40px 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+/* Checkbox aktif olunca mobilden MENÜ AÇILSIN */
+#mobile-menu-toggle:checked ~ main .mobile-nav {
+  right: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Menü butonu (hamburger) sadece mobile görünsün) */
+.menu-button {
+  display: none;
   cursor: pointer;
 }
 
-.menu-hamburger a {
-  display: inline-flex;
-  width: 32px;
-  height: 32px;
-  align-items: center;
-  justify-content: center;
+/* Close butonu */
+.close-button {
+  align-self: flex-end;
+  cursor: pointer;
 }
 
-.menu-hamburger svg {
+/* Desktop görünümü */
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: none;
+  }
+}
+
+/* Mobile görünümü */
+@media (max-width: 767px) {
+  .nav-links,
+  .contact-links {
+    display: none;
+  }
+
+  .menu-button {
+    display: flex;
+  }
+}
+
+.icon-group {
   width: 24px;
   height: 24px;
   fill: #2e2f42;
@@ -101,6 +142,7 @@ nav {
   font-weight: 700;
   line-height: 1.5;
   list-style: none;
+  text-decoration: none;
   margin: 0;
   gap: 40px;
 }
@@ -113,7 +155,6 @@ nav {
   padding-bottom: 4px;
   transition: color 0.3s ease;
 }
-
 .page-nav a.active::after {
   content: "";
   position: absolute;
@@ -124,7 +165,6 @@ nav {
   background-color: #4d5ae5;
   border-radius: 2px;
 }
-
 .page-nav a::after {
   content: "";
   position: absolute;
@@ -159,6 +199,7 @@ address {
 .page-mail a {
   color: #2e2f42;
   text-decoration: none;
+  position: relative;
 }
 
 .page-mail a:hover {
@@ -231,6 +272,21 @@ h3 {
   background-position: center center;
   background-size: cover;
   margin: 0 auto;
+  max-width: 320px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.hero:hover::after {
+  opacity: 1;
 }
 
 .hero .container {
@@ -238,6 +294,8 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 button {
@@ -267,6 +325,7 @@ button:hover {
 .icon-diagram,
 .icon-astronaut {
   width: 64px;
+  height: 64px;
 }
 
 .icons {
@@ -303,6 +362,7 @@ button:hover {
   line-height: 1.11;
   text-align: center;
   margin-bottom: 8px;
+  color: #2e2f42;
 }
 
 .features-section p {
@@ -364,14 +424,11 @@ section.ourteam {
 .socials {
   display: flex;
   gap: 24px;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  transition: 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.socials:hover,
-.socials:focus {
+.socials :hover,
+.socials :focus {
   background-color: #31d0aa;
 }
 
@@ -532,7 +589,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 2px;
   width: 100%;
   border-radius: 4px;
 }
@@ -540,8 +597,9 @@ footer {
 .subscribe-title {
   font-size: 16px;
   font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
   color: #ffffff;
-  margin: 0;
 }
 
 .email-form {
@@ -549,7 +607,6 @@ footer {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 16px;
 }
 
 .email-form input[type="email"] {
@@ -623,6 +680,7 @@ footer {
   max-width: 408px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
+  overflow: auto;
 }
 
 .modal-title {
@@ -663,10 +721,10 @@ footer {
   border-color: #404bbf;
 }
 
-.close-button:hover .icon-close-black {
+.close-button:hover .icon-close-black,
+.close-button:focus .icon-close-black {
   fill: #ffffff;
 }
-
 .form label {
   display: block;
   margin-bottom: 4px;
@@ -878,6 +936,7 @@ textarea:focus {
 
   .footer-info {
     max-width: 264px;
+    align-items: flex-start;
   }
 
   .social-media {
@@ -886,6 +945,7 @@ textarea:focus {
 
   .subscribe {
     align-items: flex-start;
+    width: auto;
   }
 
   .email-form {
